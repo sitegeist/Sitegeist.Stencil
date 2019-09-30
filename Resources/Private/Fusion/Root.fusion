@@ -27,13 +27,15 @@ prototype(Sitegeist.Stencil:Node) < prototype(Neos.Neos:ContentComponent) {
 
     renderer = afx`
         <div class="node">
-            <div><i class={'fa-' + props.node.nodeType.fullConfiguration.ui.icon}>{node.nodeType.name}: {node.label}</i></div>
+            <div><i class={props.node.nodeType.fullConfiguration.ui.icon} ></i> {node.nodeType.name}: {node.label}</div>
             <div>
                 <div>Properties</div>
                 <Neos.Fusion:Loop items={node.nodeType.fullConfiguration.properties} itemKey="propertyName" itemName="propertyConfiguration">
-                    <div @if.isInlineEditable={propertyConfiguration.ui.inlineEditable == true}>
-                        {propertyConfiguration.ui.label}<br />
-                        <Neos.Neos:Editable property={propertyName} />
+                    <div @if.isInlineEditable={propertyConfiguration.ui.inlineEditable == true} class="property">
+                        <div class="property__label">{propertyConfiguration.ui.label}</div>
+                        <div class="property__editable">
+                            <Neos.Neos:Editable property={propertyName} />
+                        </div>
                     </div>
                 </Neos.Fusion:Loop>
             </div>
