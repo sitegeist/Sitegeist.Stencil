@@ -1,5 +1,5 @@
 {
-    "description": "",
+    "description": "Structure mode for Neos",
     "type": "neos-package",
     "name": "sitegeist/stencil",
     "require": {

@@ -1,5 +1,7 @@
-# Sitegeist.Stencil 
-## This is WIP, everything in here may change or turn out to be a bad idea at all.
+# Sitegeist.Stencil
+## Structure mode for Neos
+
+**This is WIP, everything in here may change or turn out to be a bad idea at all.**
 
 ### Authors & Sponsors
 
