@@ -1,0 +1,61 @@
+sitegeistStencil = Neos.Neos:Page {
+    head.stylesheets = Neos.Fusion:Array {
+        fontawesome = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes.rel = 'stylesheet'
+            attributes.href = Neos.Fusion:ResourceUri {
+                path = 'resource://Sitegeist.Stencil/Public/Fonts/fontawesome/css/all.css'
+            }
+        }
+        main = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes.rel = 'stylesheet'
+            attributes.href = Neos.Fusion:ResourceUri {
+                path = 'resource://Sitegeist.Stencil/Public/Styles/main.css'
+            }
+        }
+    }
+
+    body = Sitegeist.Stencil:Node {
+        node = ${documentNode}
+    }
+}
+
+prototype(Sitegeist.Stencil:Node) < prototype(Neos.Neos:ContentComponent) {
+    node = null
+    @context.node = ${this.node}
+
+    renderer = afx`
+        <div class="node">
+            <div><i class={'fa-' + props.node.nodeType.fullConfiguration.ui.icon}>{node.nodeType.name}: {node.label}</i></div>
+            <div>
+                <div>Properties</div>
+                <Neos.Fusion:Loop items={node.nodeType.fullConfiguration.properties} itemKey="propertyName" itemName="propertyConfiguration">
+                    <div @if.isInlineEditable={propertyConfiguration.ui.inlineEditable == true}>
+                        {propertyConfiguration.ui.label}<br />
+                        <Neos.Neos:Editable property={propertyName} />
+                    </div>
+                </Neos.Fusion:Loop>
+            </div>
+            <div>
+                <div>Named Children</div>
+                <Neos.Fusion:Loop items={q(node).children().get()} itemName="childNode">
+                    <Sitegeist.Stencil:Fragment @if.autocreated={childNode.autocreated} @if.isContent={q(childNode).is('[instanceof Neos.Neos:Content],[instanceof Neos.Neos:ContentCollection]')}>
+                        <Sitegeist.Stencil:Node node={childNode} />
+                    </Sitegeist.Stencil:Fragment>
+                </Neos.Fusion:Loop>
+            </div>
+                <div>Content Children</div>
+                <Neos.Fusion:Loop items={q(node).children().get()} itemName="childNode">
+                    <Sitegeist.Stencil:Fragment @if.autocreated={!childNode.autocreated} @if.isContent={q(childNode).is('[instanceof Neos.Neos:Content],[instanceof Neos.Neos:ContentCollection]')}>
+                        <Sitegeist.Stencil:Node node={childNode} />
+                    </Sitegeist.Stencil:Fragment>
+                </Neos.Fusion:Loop>
+            </div>
+        </div>
+    `
+}
+
+prototype(Sitegeist.Stencil:Fragment) < prototype(Neos.Fusion:Component) {
+    renderer = ${props.content}
+}

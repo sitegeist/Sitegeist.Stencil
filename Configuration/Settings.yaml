@@ -1,0 +1,13 @@
+Neos:
+  Neos:
+    userInterface:
+      editPreviewModes:
+        stencil:
+          isEditingMode: true
+          isPreviewMode: false
+          fusionRenderingPath: sitegeistStencil
+          title: 'Structure'
+          position: 150
+    fusion:
+      autoInclude:
+        Sitegeist.Stencil: true
