@@ -32,7 +32,7 @@ prototype(Sitegeist.Stencil:Node) < prototype(Neos.Neos:ContentComponent) {
                 <div>Properties</div>
                 <Neos.Fusion:Loop items={node.nodeType.fullConfiguration.properties} itemKey="propertyName" itemName="propertyConfiguration">
                     <div @if.isInlineEditable={propertyConfiguration.ui.inlineEditable == true} class="property">
-                        <div class="property__label">{propertyConfiguration.ui.label}</div>
+                        <div class="property__label">{propertyConfiguration.ui.label || propertyName}</div>
                         <div class="property__editable">
                             <Neos.Neos:Editable property={propertyName} />
                         </div>
