@@ -1,23 +1,46 @@
+
+@font-face {
+	font-family: 'Noto Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-display: auto;
+	src: url("../Fonts/NotoSans/NotoSans-Regular.ttf");
+}
+
 body {
 	background-color: rgb(30, 30, 30);
 	color: white;
-	font-family: sans-serif;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 14px;
+	padding: 10px 10px 0 0;
 }
 
 .node {
-	border-left: 5px solid #999;
-	border-top: 1px solid #999;
+	border-left: 5px solid rgb(63, 63, 63);
 	background-color: rgb(34, 34, 34);
-	padding: 10px 10px 0 10px;
-	margin: 10px 10px 0 10px;
+	margin: 10px 0 10px 10px;
+}
+
+.node__header {
+	border-top: 1px solid rgb(63, 63, 63);
+	border-bottom: 1px solid rgb(63, 63, 63);
+	border-right: 1px solid rgb(63, 63, 63);
+	background-color: rgb(38, 38, 38);
+	padding: 10px;
+	font-size: 18px;
+}
+
+.node__header i {
+	padding-right: 10px;
 }
 
 .property {
+	padding: 16px 16px 0 18px;
 	margin: 10px 0;
 }
 
 .property__label {
-
+	margin-bottom: 4px;
 }
 
 .property__editable {
@@ -25,6 +48,7 @@ body {
 	background: #323232;
 }
 
-.node__label {
-
+.childNodes {
+	margin-top: 16px;
+	padding-left: 10px;
 }
