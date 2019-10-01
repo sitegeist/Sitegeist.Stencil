@@ -23,11 +23,12 @@ sitegeistStencil = Neos.Neos:Page {
 
 prototype(Sitegeist.Stencil:Node) < prototype(Neos.Neos:ContentComponent) {
     node = null
+    depth = 0
     @context.node = ${this.node}
 
     renderer = afx`
-        <div class="node">
-            <div class="node__header"><i class={props.node.nodeType.fullConfiguration.ui.icon} ></i>{node.label}</div>
+        <details class="node" open={props.depth < 2}>
+            <summary class="node__header"><i class={props.node.nodeType.fullConfiguration.ui.icon} ></i>{node.label}</summary>
             <div>
                 <Neos.Fusion:Loop items={node.nodeType.fullConfiguration.properties} itemKey="propertyName" itemName="propertyConfiguration">
                     <div @if.isInlineEditable={propertyConfiguration.ui.inlineEditable == true} class="property">
@@ -41,16 +42,16 @@ prototype(Sitegeist.Stencil:Node) < prototype(Neos.Neos:ContentComponent) {
             <div class="childNodes">
                 <Neos.Fusion:Loop items={q(node).children().get()} itemName="childNode">
                     <Sitegeist.Stencil:Fragment @if.autocreated={childNode.autocreated} @if.isContent={q(childNode).is('[instanceof Neos.Neos:Content],[instanceof Neos.Neos:ContentCollection]')}>
-                        <Sitegeist.Stencil:Node node={childNode} />
+                        <Sitegeist.Stencil:Node node={childNode} depth={props.depth + 1} />
                     </Sitegeist.Stencil:Fragment>
                 </Neos.Fusion:Loop>
                 <Neos.Fusion:Loop items={q(node).children().get()} itemName="childNode">
                     <Sitegeist.Stencil:Fragment @if.autocreated={!childNode.autocreated} @if.isContent={q(childNode).is('[instanceof Neos.Neos:Content],[instanceof Neos.Neos:ContentCollection]')}>
-                        <Sitegeist.Stencil:Node node={childNode} />
+                        <Sitegeist.Stencil:Node node={childNode} depth={props.depth + 1} />
                     </Sitegeist.Stencil:Fragment>
                 </Neos.Fusion:Loop>
             </div>
-        </div>
+        </details>
     `
 }
 

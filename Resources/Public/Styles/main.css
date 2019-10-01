@@ -30,6 +30,10 @@ body {
 	font-size: 18px;
 }
 
+.node__header:focus {
+	outline: none;
+}
+
 .node__header i {
 	padding-right: 10px;
 }
