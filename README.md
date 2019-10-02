@@ -1,7 +1,9 @@
 # Sitegeist.Stencil
-## Structure mode for Neos
+## Structure mode for Neos, edit nodes without any frontend
 
 **This is WIP, everything in here may change or turn out to be a bad idea at all.**
+
+<img src="./Resources/Public/Images/backend-structure-mode.png" width="800" />
 
 ### Authors & Sponsors
 
