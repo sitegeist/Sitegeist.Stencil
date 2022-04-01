@@ -3,7 +3,7 @@
     "type": "neos-package",
     "name": "sitegeist/stencil",
     "require": {
-        "neos/neos": "^4.3 || ^5.0 || dev-master",
+        "neos/neos": "^4.3 || ^5.0 || ^7.0 || ^8.0 || dev-master",
         "neos/fusion-afx": "*"
     },
     "license": "GPL-3.0-or-later",
