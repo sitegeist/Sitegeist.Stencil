@@ -1,6 +1,8 @@
 # Sitegeist.Stencil
 ## Structure mode for Neos, edit nodes without any frontend
 
+## !!! Since Neos 8.1 the features of this package are included in the RawContent editing mode. So this will be archived!!!
+
 **This is WIP, everything in here may change or turn out to be a bad idea at all.**
 
 <img src="./Resources/Public/Images/backend-structure-mode.png" width="800" />
